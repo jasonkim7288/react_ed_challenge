@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, createRef } from 'react'
 import { Button, Box, Badge, TextField} from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
@@ -7,7 +7,7 @@ import EditIcon from '@material-ui/icons/Edit';
 class CookieGame extends Component {
   constructor(props) {
     super(props);
-    this.numInput = React.createRef();
+    this.numInput = createRef();
     this.state = {
       number: 0,
       plusCount: 0,

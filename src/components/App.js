@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
 import { Container, Typography, Box} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import BuzzBuzz from './BuzzBuzz';
@@ -8,9 +8,24 @@ import Comments from './Comments';
 import CookieGame from './CookieGame';
 import YellingGreeterWrapper from './YellingGreeterWrapper';
 
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+import FormatQuoteIcon from '@material-ui/icons/FormatQuote';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
+import VibrationIcon from '@material-ui/icons/Vibration';
+import CommentIcon from '@material-ui/icons/Comment';
+import VideogameAssetIcon from '@material-ui/icons/VideogameAsset';
+import VolumeUpIcon from '@material-ui/icons/VolumeUp';
+import TheatersIcon from '@material-ui/icons/Theaters';
+import PeopleIcon from '@material-ui/icons/People';
+import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
+
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import LogInOut from './LogInOut';
+import MovieList from './MovieList';
+import ThreeUserName from './ThreeUserName';
+import BusinessCardMaker from './BusinessCardMaker';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -56,7 +71,7 @@ function App() {
   };
 
   return (
-    <Container>
+    <Container className={classes.root}>
       <AppBar position="static" color="default">
         <Tabs
           value={value}
@@ -67,13 +82,17 @@ function App() {
           textColor="primary"
           aria-label="scrollable force tabs example"
         >
-          <Tab label="Happy Message" {...a11yProps(0)} />
-          <Tab label="Quotes" {...a11yProps(1)} />
-          <Tab label="BuzzBuzz" {...a11yProps(2)} />
-          <Tab label="Comments" {...a11yProps(3)} />
-          <Tab label="Cookie Game" {...a11yProps(4)} />
-          <Tab label="Yelling Greeter" {...a11yProps(5)} />
-          <Tab label="Item Seven" {...a11yProps(6)} />
+          <Tab label="Happy Message" icon={<EmojiPeopleIcon />} {...a11yProps(0)} />
+          <Tab label="Quotes" icon={<FormatQuoteIcon />} {...a11yProps(1)} />
+          <Tab label="BuzzBuzz" icon={<VibrationIcon />} {...a11yProps(2)} />
+          <Tab label="Comments" icon={<CommentIcon />} {...a11yProps(3)} />
+          <Tab label="Cookie Game" icon={<VideogameAssetIcon />} {...a11yProps(4)} />
+          <Tab label="Yelling Greeter" icon={<VolumeUpIcon />} {...a11yProps(5)} />
+          <Tab label="Log in and out" icon={<LockOpenIcon />} {...a11yProps(6)} />
+          <Tab label="Movie List" icon={<TheatersIcon />} {...a11yProps(7)} />
+          <Tab label="Three user names" icon={<PeopleIcon />} {...a11yProps(8)} />
+          <Tab label="Business card maker" icon={<ContactPhoneIcon />} {...a11yProps(9)} />
+
         </Tabs>
       </AppBar>
 
@@ -96,7 +115,16 @@ function App() {
         <YellingGreeterWrapper />
       </TabPanel>
       <TabPanel value={value} index={6}>
-        Item Seven
+        <LogInOut />
+      </TabPanel>
+      <TabPanel value={value} index={7}>
+        <MovieList />
+      </TabPanel>
+      <TabPanel value={value} index={8}>
+        <ThreeUserName />
+      </TabPanel>
+      <TabPanel value={value} index={9}>
+        <BusinessCardMaker />
       </TabPanel>
 
     </Container>
