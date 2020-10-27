@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-function YellingGreeter({ message }) {
-  const messageUpper = message.toUpperCase();
-  return (
-    <h1 >{messageUpper}</h1>
-  )
+export default class YellingGreeter extends Component {
+
+  render() {
+    return (
+      <h1>{this.props.message.toUpperCase()}</h1>
+    )
+  }
 }
 
-export default YellingGreeter;
+
+// import React from 'react'
+
+
+
+// function YellingGreeter({ message }) {
+//   const messageUpper = message.toUpperCase();
+//   return (
+//     <h1 >{messageUpper}</h1>
+//   )
+// }
+
+// export default YellingGreeter;
