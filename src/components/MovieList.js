@@ -56,6 +56,7 @@ export default class MovieList extends Component {
   handleClick() {
     if (this.movieInput.value) {
       this.setState({ movieList: [...this.state.movieList, this.movieInput.value]});
+      this.movieInput.value = "";
     }
   }
 

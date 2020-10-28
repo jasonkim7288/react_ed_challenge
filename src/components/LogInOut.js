@@ -9,28 +9,22 @@ export default class LogInOut extends Component {
     }
   }
 
-  componentDidUpdate
-  handleChange(isLoggedIn) {
-    this.setState({ isLoggedIn });
+  handleChange = () => {
+    this.setState({isLoggedIn: this.state.isLoggedIn ? false : true });
   }
 
   render() {
     const { isLoggedIn } = this.state;
     return (
       <div>
-        { isLoggedIn ?
-          (
-            <Box>
-              <Button variant="contained" color="secondary" onClick={() => this.handleChange(false)}>Log out</Button>
+        <Box>
+          <Button variant="contained" color={isLoggedIn ? "secondary" : "primary"} onClick={this.handleChange}>{isLoggedIn ? "Log out" : "Log in"}</Button>
+          { isLoggedIn &&
+            (
               <Typography variant="h1">Welcome!</Typography>
-            </Box>
-          ) :
-          (
-            <Box>
-              <Button variant="contained" color="primary" onClick={() => this.handleChange(true)}>Log in</Button>
-            </Box>
-          )
-        }
+            )  
+          }
+        </Box>
       </div>
     )
   }
