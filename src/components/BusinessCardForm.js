@@ -1,38 +1,81 @@
-import { Box, Divider, Grid, Typography, TextField } from '@material-ui/core'
-import React, { Component, createRef } from 'react'
+import { Box, Divider, Grid, Typography, TextField, Button } from '@material-ui/core';
+import React, { Component, createRef } from 'react';
+import GridBox from './GridBox';
 
 export default class BusinessCardForm extends Component {
   constructor(props) {
     super(props);
-    this.givenNameInput = createRef();
+    this.state = {
+      givenName: '',
+      surName: '',
+      email: '',
+      phone: '',
+      houseNameOrNum: '',
+      street: '',
+      suburb: '',
+      state: '',
+      postcode: '',
+      country: ''
+    }
   }
+
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({[name]: value});
+  }
+
+  handleSubmit = (e) => {
+    console.log('this.state:', this.state);
+    e.preventDefault();
+    this.props.handleSubmitCb({...this.state});
+  }
+
   render() {
     return (
       <Box>
-        <Typography variant="h2">PERSONAL DETAILS</Typography>
+        <Typography variant="h3">PERSONAL DETAILS</Typography>
         <Divider />
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6}>
-            <Box m={5}>
-              <TextField inputRef={ ref => {this.givenNameInput = ref;} } label="GIVEN NAME" />
-            </Box>
+        <br />
+        <form onSubmit={this.handleSubmit}>
+          <Grid container spacing={3}>
+            <GridBox>
+              <TextField label="GIVEN NAME" name="givenName" value={this.state.givenName} onChange={this.handleChange}/>
+            </GridBox>
+            <GridBox>
+              <TextField label="SUR NAME" name="surName" value={this.state.surName} onChange={this.handleChange}/>
+            </GridBox>
+            <GridBox>
+              <TextField label="EMAIL" type="email" name="email" value={this.state.email} onChange={this.handleChange}/>
+            </GridBox>
+            <GridBox>
+              <TextField label="PHONE" name="phone" value={this.state.phone} onChange={this.handleChange}/>
+            </GridBox>
+            <Grid item xs={12}>
+              <Divider />
+            </Grid>
+            <GridBox>
+              <TextField label="HOUSE NAME OR #" name="houseNameOrNum" value={this.state.houseNameOrNum} onChange={this.handleChange}/>
+            </GridBox>
+            <GridBox>
+              <TextField label="STREET" name="street" value={this.state.street} onChange={this.handleChange}/>
+            </GridBox>
+            <GridBox>
+              <TextField label="SUBURB" name="suburb" value={this.state.suburb} onChange={this.handleChange}/>
+            </GridBox>
+            <GridBox>
+              <TextField label="STATE" name="state" value={this.state.state} onChange={this.handleChange}/>
+            </GridBox>
+            <GridBox>
+              <TextField label="POSTCODE" name="postcode" value={this.state.postcode} onChange={this.handleChange}/>
+            </GridBox>
+            <GridBox>
+              <TextField label="COUNTRY" name="country" value={this.state.country} onChange={this.handleChange}/>
+            </GridBox>
+            <GridBox>
+              <Button variant="contained" color="primary" type="submit">Submit</Button>
+            </GridBox>
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <Box m={5}>
-              <TextField inputRef={ ref => {this.surNameInput = ref;} } label="SUR NAME" />
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Box m={5}>
-              <TextField inputRef={ ref => {this.emailInput = ref;} } label="EMAIL" type="email" />
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Box m={5}>
-              <TextField inputRef={ ref => {this.givenNameInput = ref;} } label="GIVEN NAME" />
-            </Box>
-          </Grid>
-        </Grid>
+        </form>
       </Box>
     )
   }

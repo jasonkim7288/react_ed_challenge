@@ -8,6 +8,8 @@ import Comments from './Comments';
 import CookieGame from './CookieGame';
 import YellingGreeterWrapper from './YellingGreeterWrapper';
 
+import '../styles/app.css';
+
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import FormatQuoteIcon from '@material-ui/icons/FormatQuote';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
