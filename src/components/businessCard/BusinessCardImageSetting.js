@@ -1,0 +1,63 @@
+import React, { useEffect, useState } from 'react'
+import AWS from 'aws-sdk';
+import { Box, Paper } from '@material-ui/core';
+
+function BusinessCardImageSetting({ settings, updateSettingCb }) {
+  const [imgURLs, setImgURLs] = useState([]);
+
+  useEffect(() => {
+    const s3 = new AWS.S3({
+      accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY
+    });
+    const params = {
+      Bucket: process.env.REACT_APP_AWS_BUSINESS_CARD_BUCKET_NAME,
+      Delimiter: '',
+      Prefix: ''
+    };
+
+    s3.listObjectsV2(params, (err, data) => {
+      if (err) {
+        console.log('err:', err.message);
+      } else {
+        console.log('data.CommonPrefixes:', data.CommonPrefixes)
+        console.log('data.Contents:', data.Contents);
+        const requests = data.Contents.map(content =>
+          s3.getSignedUrlPromise ('getObject', {
+              Bucket: process.env.REACT_APP_AWS_BUSINESS_CARD_BUCKET_NAME,
+              Key: content.Key,
+          })
+        );
+        Promise.all(requests).then(resURLS => setImgURLs([...resURLS]));
+      }
+    });
+  }, [])
+
+  const handleClick = (e) => {
+    console.log('e.target.src:', e.target.src);
+    const { name, src } = e.target;
+    updateSettingCb(name, src);
+  }
+
+  return (
+    <div>
+      { imgURLs &&
+        (
+          <Box display="flex" alignItems="center" p={1} m={1}>
+            {imgURLs.map(imgURL => (
+              <Box m={3}>
+              <Paper elevation={3}>
+                <Box p={3} style={{backgroundColor:'#e0e0e0'}}>
+                  <img src={imgURL} alt="logo" onClick={handleClick} width="100" key={imgURL} name="imgURL"/>
+                </Box>
+              </Paper>
+              </Box>
+            ))}
+          </Box>
+        )
+      }
+    </div>
+  )
+}
+
+export default BusinessCardImageSetting

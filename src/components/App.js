@@ -27,7 +27,7 @@ import Tab from '@material-ui/core/Tab';
 import LogInOut from './LogInOut';
 import MovieList from './MovieList';
 import ThreeUserName from './ThreeUserName';
-import BusinessCardMaker from './BusinessCardMaker';
+import BusinessCardMaker from './businessCard/BusinessCardMaker';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

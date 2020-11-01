@@ -23,18 +23,18 @@ const onSubmitWrapped = handleSubmitCb => values => {
 
 const validationSchema = Yup.object().shape({
   givenName: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
+    .min(2)
+    .max(50)
+    .required(),
   surName: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
+    .min(2)
+    .max(50)
+    .required(),
   email: Yup.string()
-    .email('Invalid email format')
-    .required('Required'),
-  phone: Yup.string()
-    .required('Required')
+    .email()
+    .required(),
+  phone: Yup.number()
+    .required()
 })
 
 function MyTextField({formik, label, name}) {
@@ -49,6 +49,8 @@ function BusinessCardForm({ handleSubmitCb }) {
     onSubmit: onSubmitWrapped(handleSubmitCb),
     validationSchema
   })
+
+  console.log('formik rendered');
   return (
     <Box>
       <Typography variant="h3">PERSONAL DETAILS</Typography>

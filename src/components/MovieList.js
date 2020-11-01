@@ -21,7 +21,7 @@ export default class MovieList extends Component {
 
     this.params = {
       Bucket: process.env.REACT_APP_AWS_BUCKET_NAME,
-      Key: process.env.REACT_APP_AWS_FILE_NAME
+      Delimiter: ''
     };
 
     console.log('this.params:', this.params)
