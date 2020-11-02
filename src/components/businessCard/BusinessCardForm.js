@@ -1,7 +1,7 @@
 import { Box, Divider, Grid, Typography, TextField, Button } from '@material-ui/core';
 import React, { Component, createRef } from 'react';
 import GridBox from './GridBox';
-import { useFormik } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
 const initialValues = {
@@ -37,65 +37,65 @@ const validationSchema = Yup.object().shape({
     .required()
 })
 
-function MyTextField({formik, label, name}) {
+function MyTextField(props) {
+  console.log('props:', props);
+  const {errors, name} = props;
   return (
-    <TextField label={label} name={name} {...formik.getFieldProps(name)} error={formik.errors[name]} helperText={formik.errors[name]} />
+    <Field {...props} error={errors[name] ? true : false} helperText={errors[name]} as={TextField}/>
   )
 }
 
 function BusinessCardForm({ handleSubmitCb }) {
-  const formik = useFormik({
-    initialValues,
-    onSubmit: onSubmitWrapped(handleSubmitCb),
-    validationSchema
-  })
-
   console.log('formik rendered');
   return (
     <Box>
       <Typography variant="h3">PERSONAL DETAILS</Typography>
       <Divider />
       <br />
-      <form onSubmit={formik.handleSubmit}>
-        <Grid container spacing={3}>
-          <GridBox>
-            <MyTextField formik={formik} label="GIVEN NAME" name="givenName"/>
-          </GridBox>
-          <GridBox>
-            <MyTextField formik={formik} label="SUR NAME" name="surName"/>
-          </GridBox>
-          <GridBox>
-            <MyTextField formik={formik} label="EMAIL" name="email"/>
-          </GridBox>
-          <GridBox>
-            <MyTextField formik={formik} label="PHONE" name="phone"/>
-          </GridBox>
-          <Grid item xs={12}>
-            <Divider />
-          </Grid>
-          <GridBox>
-            <MyTextField formik={formik} label="HOUSE NAME OR #" name="houseNameOrNum" />
-          </GridBox>
-          <GridBox>
-            <MyTextField formik={formik} label="STREET" name="street"/>
-          </GridBox>
-          <GridBox>
-            <MyTextField formik={formik} label="SUBURB" name="suburb"/>
-          </GridBox>
-          <GridBox>
-            <MyTextField formik={formik} label="STATE" name="state"/>
-          </GridBox>
-          <GridBox>
-            <MyTextField formik={formik} label="POSTCODE" name="postcode"/>
-          </GridBox>
-          <GridBox>
-            <MyTextField formik={formik} label="COUNTRY" name="country"/>
-          </GridBox>
-          <GridBox>
-            <Button variant="contained" color="primary" type="submit">Submit</Button>
-          </GridBox>
-        </Grid>
-      </form>
+      <Formik initialValues={initialValues} onSubmit={onSubmitWrapped(handleSubmitCb)} validationSchema={validationSchema}>
+        {({ errors, touched }) => (
+          <Form>
+            <Grid container spacing={3}>
+              <GridBox>
+                <MyTextField label="GIVEN NAME" name="givenName" errors={errors}/>
+              </GridBox>
+              <GridBox>
+                <MyTextField label="SUR NAME" name="surName" errors={errors}/>
+              </GridBox>
+              <GridBox>
+                <MyTextField label="EMAIL" name="email" errors={errors}/>
+              </GridBox>
+              <GridBox>
+                <MyTextField label="PHONE" name="phone" errors={errors}/>
+              </GridBox>
+              <Grid item xs={12}>
+                <Divider />
+              </Grid>
+              <GridBox>
+                <MyTextField label="HOUSE NAME OR #" name="houseNameOrNum" errors={errors}/>
+              </GridBox>
+              <GridBox>
+                <MyTextField label="STREET" name="street" errors={errors}/>
+              </GridBox>
+              <GridBox>
+                <MyTextField label="SUBURB" name="suburb" errors={errors}/>
+              </GridBox>
+              <GridBox>
+                <MyTextField label="STATE" name="state" errors={errors}/>
+              </GridBox>
+              <GridBox>
+                <MyTextField label="POSTCODE" name="postcode" errors={errors}/>
+              </GridBox>
+              <GridBox>
+                <MyTextField label="COUNTRY" name="country" errors={errors}/>
+              </GridBox>
+              <GridBox>
+                <Button variant="contained" color="primary" type="submit">Submit</Button>
+              </GridBox>
+            </Grid>
+          </Form>
+        )}
+      </Formik>
     </Box>
   )
 }
