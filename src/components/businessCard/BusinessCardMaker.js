@@ -12,6 +12,7 @@ export default class BusinessCardMaker extends Component {
   }
 
   handleSubmitCb = (submittedForm) => {
+    console.log('handleSubmitCb');
     this.setState({ submittedForm })
   }
 
