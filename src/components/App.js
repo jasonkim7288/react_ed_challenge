@@ -84,51 +84,51 @@ function App() {
           textColor="primary"
           aria-label="scrollable force tabs example"
         >
-          <Tab label="Happy Message" icon={<EmojiPeopleIcon />} {...a11yProps(0)} />
-          <Tab label="Quotes" icon={<FormatQuoteIcon />} {...a11yProps(1)} />
-          <Tab label="BuzzBuzz" icon={<VibrationIcon />} {...a11yProps(2)} />
-          <Tab label="Comments" icon={<CommentIcon />} {...a11yProps(3)} />
-          <Tab label="Cookie Game" icon={<VideogameAssetIcon />} {...a11yProps(4)} />
-          <Tab label="Yelling Greeter" icon={<VolumeUpIcon />} {...a11yProps(5)} />
-          <Tab label="Log in and out" icon={<LockOpenIcon />} {...a11yProps(6)} />
-          <Tab label="Movie List" icon={<TheatersIcon />} {...a11yProps(7)} />
-          <Tab label="Three user names" icon={<PeopleIcon />} {...a11yProps(8)} />
-          <Tab label="Business card maker" icon={<ContactPhoneIcon />} {...a11yProps(9)} />
+          <Tab label="Business card maker" icon={<ContactPhoneIcon />} {...a11yProps(0)} />
+          <Tab label="Happy Message" icon={<EmojiPeopleIcon />} {...a11yProps(1)} />
+          <Tab label="Quotes" icon={<FormatQuoteIcon />} {...a11yProps(2)} />
+          <Tab label="BuzzBuzz" icon={<VibrationIcon />} {...a11yProps(3)} />
+          <Tab label="Comments" icon={<CommentIcon />} {...a11yProps(4)} />
+          <Tab label="Cookie Game" icon={<VideogameAssetIcon />} {...a11yProps(5)} />
+          <Tab label="Yelling Greeter" icon={<VolumeUpIcon />} {...a11yProps(6)} />
+          <Tab label="Log in and out" icon={<LockOpenIcon />} {...a11yProps(7)} />
+          <Tab label="Movie List" icon={<TheatersIcon />} {...a11yProps(8)} />
+          <Tab label="Three user names" icon={<PeopleIcon />} {...a11yProps(9)} />
+
 
         </Tabs>
       </AppBar>
 
       <TabPanel value={value} index={0}>
-        <HappyMessage />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <Quotes />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <BuzzBuzz />
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        <Comments />
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        <CookieGame />
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        <YellingGreeterWrapper />
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-        <LogInOut />
-      </TabPanel>
-      <TabPanel value={value} index={7}>
-        <MovieList />
-      </TabPanel>
-      <TabPanel value={value} index={8}>
-        <ThreeUserName />
-      </TabPanel>
-      <TabPanel value={value} index={9}>
         <BusinessCardMaker />
       </TabPanel>
-
+      <TabPanel value={value} index={1}>
+        <HappyMessage />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <Quotes />
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        <BuzzBuzz />
+      </TabPanel>
+      <TabPanel value={value} index={4}>
+        <Comments />
+      </TabPanel>
+      <TabPanel value={value} index={5}>
+        <CookieGame />
+      </TabPanel>
+      <TabPanel value={value} index={6}>
+        <YellingGreeterWrapper />
+      </TabPanel>
+      <TabPanel value={value} index={7}>
+        <LogInOut />
+      </TabPanel>
+      <TabPanel value={value} index={8}>
+        <MovieList />
+      </TabPanel>
+      <TabPanel value={value} index={9}>
+        <ThreeUserName />
+      </TabPanel>
     </Container>
   )
 }
