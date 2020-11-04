@@ -45,8 +45,8 @@ function BusinessCardImageSetting({ settings, updateSettingCb }) {
   }, [])
 
   const handleClick = (e) => {
-    console.log('e.target.src:', e.target.src);
-    const { name, src } = e.target;
+    // console.log('e.target.src:', e.target.querySelector('img'));
+    const { name, src } = e.target.querySelector('img');
     updateSettingCb(name, src);
   }
 
@@ -55,13 +55,13 @@ function BusinessCardImageSetting({ settings, updateSettingCb }) {
       { imgURLs &&
         (
           <Box display="flex" alignItems="center" p={1} m={1}>
-            {imgURLs.map(imgURL => (
-              <Box m={3}>
-              <Paper elevation={3} className="paper-logo">
-                <Box p={3} style={{backgroundColor:'#e0e0e0'}}>
-                  <img src={imgURL} alt="logo" onClick={handleClick} width="100" key={imgURL} name="imgURL"/>
-                </Box>
-              </Paper>
+            {imgURLs.map((imgURL, index) => (
+              <Box m={3} key={index} onClick={handleClick} >
+                <Paper elevation={3} className="paper-logo">
+                  <Box p={3} style={{backgroundColor:'#e0e0e0'}}>
+                    <img src={imgURL} alt="logo"width="100" key={imgURL} name="imgURL"/>
+                  </Box>
+                </Paper>
               </Box>
             ))}
           </Box>
