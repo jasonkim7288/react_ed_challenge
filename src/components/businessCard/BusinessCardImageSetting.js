@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import AWS from 'aws-sdk';
+// import AWS from 'aws-sdk';
 import { Box, Paper } from '@material-ui/core';
 import '../../styles/businessCard/businessCardImageSetting.css';
 

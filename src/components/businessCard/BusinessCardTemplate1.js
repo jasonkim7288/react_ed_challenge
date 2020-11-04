@@ -1,5 +1,5 @@
-import { Box, Button, Grid, Paper, Typography } from '@material-ui/core';
-import React, { Component, createRef } from 'react'
+import { Box, Grid, Typography } from '@material-ui/core';
+import React from 'react'
 
 function MyTypography({ children, myType }) {
   const typoStyle = {
@@ -45,7 +45,7 @@ function BusinessCardTemplate1({ settings, submittedForm }) {
   return (
     <Grid container style={gridContainerStyle} align="center" alignItems="center">
       <Grid item xs={5} >
-        <img src={settings.imgURL} width="200"/>
+        <img src={settings.imgURL} alt="logo" width="200"/>
       </Grid>
       <Grid item xs={7} style={rightGridStyle}>
         <Typography style={nameStyle}>

@@ -1,22 +1,9 @@
 import { Box, Divider, Grid, Typography, TextField, Button } from '@material-ui/core';
-import React, { Component, createRef, useCallback } from 'react';
+import React from 'react';
 import GridBox from './GridBox';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-
-const initialValues = {
-  givenName: '',
-  surName: '',
-  email: '',
-  phone: '',
-  houseNameOrNum: '',
-  street: '',
-  suburb: '',
-  state: '',
-  postcode: '',
-  country: ''
-};
 
 const onSubmitWrapped = handleSubmitCb => values => {
   // console.log('values:', values);
