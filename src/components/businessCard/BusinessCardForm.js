@@ -60,7 +60,7 @@ function BusinessCardForm({ handleSubmitCb }) {
                 <MyTextField label="GIVEN NAME" name="givenName" errors={errors}/>
               </GridBox>
               <GridBox>
-                <MyTextField label="SUR NAME" name="surName" errors={errors}/>
+                <MyTextField label="SURNAME" name="surName" errors={errors}/>
               </GridBox>
               <GridBox>
                 <MyTextField label="EMAIL" name="email" errors={errors}/>
