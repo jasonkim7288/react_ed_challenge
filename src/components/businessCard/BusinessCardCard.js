@@ -30,7 +30,9 @@ export default class BusinessCardCard extends Component {
   handleClick = () => {
     html2canvas(this.savingAreaRef.current, {
       scrollX: 0,
-      scrollY: -window.window.pageYOffset
+      scrollY: -window.scrollY,
+      scale: 1,
+      backgroundColor: this.state.settings.backgroundColor
     })
       .then(canvas => {
         const url = canvas.toDataURL();
