@@ -15,42 +15,58 @@ function MyTypography({ children, myType }) {
   )
 }
 
-function BusinessCardTemplate1({ settings, submittedForm }) {
+function BusinessCardTemplate2({ settings, submittedForm }) {
   const { givenName, surName, email, phone, houseNameOrNum, street, suburb, state, postcode, country } = submittedForm;
+  const boxStyle = {
+    height: '600px'
+  };
   const gridContainerStyle = {
-    padding: '77px 0'
+    height: '250px'
+  };
+  const logoStyle = {
+    maxHeight: '100px',
+    maxWidth: '200px',
+  };
+  const leftGridStyle = {
+    paddingRight: '10px',
+    textAlign: 'right',
   };
   const rightGridStyle = {
-    borderLeft: '2px solid #A1A0A8',
-    padding: '20px 50px',
+    paddingLeft: '10px',
     textAlign: 'left',
   };
+  const centerStyle = {
+    textAlign: 'center',
+  };
   const nameStyle = {
-    fontSize: '35px',
+    fontSize: '50px',
     letterSpacing: '2px',
     fontWeight: '900',
-    marginBottom: '100px'
   };
   const phoneStyle = {
     marginRight: '13px',
     fontSize: '0.95em',
     transform: 'translateY(1px)'
-  }
+  };
   const emailStyle = {
     marginRight: '15px',
     fontSize: '1.0em',
     transform: 'translateY(4px)'
-  }
+  };
 
   return (
-    <Grid container style={gridContainerStyle} align="center" alignItems="center">
-      <Grid item xs={5} >
-        <img src={settings.imgURL} alt="logo" width="200"/>
+    <Box style={boxStyle}>
+      <Grid container style={gridContainerStyle} align="center" alignItems="center">
+        <Grid item xs={5} style={leftGridStyle}>
+          <img src={settings.imgURL} alt="logo" style={logoStyle}/>
+        </Grid>
+        <Grid item xs={7} style={rightGridStyle}>
+          <Typography style={nameStyle}>
+            {givenName} {surName}
+          </Typography>
+        </Grid>
       </Grid>
-      <Grid item xs={7} style={rightGridStyle}>
-        <Typography style={nameStyle}>
-          {givenName} {surName}
-        </Typography>
+      <Box style={centerStyle}>
         <MyTypography myType="subtitle1">
           {houseNameOrNum} {street}
         </MyTypography>
@@ -61,7 +77,7 @@ function BusinessCardTemplate1({ settings, submittedForm }) {
           {country} {postcode}
         </MyTypography>
 
-        <Box m={9} />
+        <Box m={7} />
         <MyTypography myType="subtitle1">
           <i className="fas fa-phone-alt" style={phoneStyle}></i>
           {phone}
@@ -70,9 +86,9 @@ function BusinessCardTemplate1({ settings, submittedForm }) {
           <i className="far fa-envelope" style={emailStyle}></i>
           {email}
         </MyTypography>
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   )
 }
 
-export default BusinessCardTemplate1
+export default BusinessCardTemplate2

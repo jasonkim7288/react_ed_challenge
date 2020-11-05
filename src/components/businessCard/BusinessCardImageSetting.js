@@ -45,8 +45,14 @@ function BusinessCardImageSetting({ settings, updateSettingCb }) {
   }, [])
 
   const handleClick = (e) => {
-    // console.log('e.target.src:', e.target.querySelector('img'));
-    const { name, src } = e.target.querySelector('img');
+    // console.log('e.target.name:', e.target.name);
+    let target;
+    if (e.target.name) {
+      target = e.target;
+    } else {
+      target = e.target.querySelector('img');
+    }
+    const { name, src } = target;
     updateSettingCb(name, src);
   }
 
