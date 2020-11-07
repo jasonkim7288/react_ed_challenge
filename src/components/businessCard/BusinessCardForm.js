@@ -1,6 +1,6 @@
 import { Box, Divider, Grid, Typography, TextField, Button } from '@material-ui/core';
 import React from 'react';
-import GridBox from './GridBox';
+import GridBox from '../GridBox';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 

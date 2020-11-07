@@ -1,36 +1,55 @@
-import React, { Component } from 'react'
-import { Button, Box, TextField, Typography} from '@material-ui/core';
+import React, { useState } from 'react'
+import { Button, Box, TextField, Fab} from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
 
-export default class UserName extends Component {
-  constructor(props) {
-    super(props);
+function UserName({ handleAddCb, handleDelCb, keyData, keysLength }) {
+  const [name, setName] = useState('');
 
-    this.state = {
-      name: ''
-    };
+  const handleChange = (e) => {
+    setName(e.target.value);
   }
 
-  handleChange(e) {
-    this.setState({name: e.target.value});
+  const handleClear = () => {
+    setName('');
   }
 
-  handleClick() {
-    this.setState({name: ''});
+  const handleAdd = (e) => {
+    handleAddCb();
   }
 
-  render() {
-    return (
-      <Box my={5}>
-        <Box mb={2}>
-          <Typography variant="h2">
-            I am {this.state.name}
-          </Typography>
-        </Box>
-        <Box component="span" mr={5}>
-          <TextField inputRef={ref => {this.nameInput = ref;}} label='Input Name' InputLabelProps={{shrink: true}} onChange={(e) => this.handleChange(e)} value={this.state.name}/>
-        </Box>
-          <Button variant="contained" color="secondary" onClick={() => this.handleClick()}>Delete</Button>
+  const handleDel = (e) => {
+    handleDelCb(keyData);
+  }
+
+  return (
+    <Box my={1}>
+      <Box component="span" mr={5}>
+        <TextField label='Input Name' InputLabelProps={{shrink: true}} onChange={(e) => handleChange(e)} value={name}/>
       </Box>
-    );
-  }
+      <Box component="span" mr={5}>
+        <Button variant="contained" color="secondary" onClick={() => handleClear()}>Clear</Button>
+      </Box>
+      <Box component="span" mr={5}>
+        <Fab color="primary" aria-label="add" onClick={handleAdd} >
+          <AddIcon />
+        </Fab>
+      </Box>
+      {
+        keysLength > 1 &&
+        (
+          <Box component="span" mr={5}>
+            <Fab color="secondary" aria-label="del" onClick={handleDel}>
+              <RemoveIcon />
+            </Fab>
+          </Box>
+        )
+      }
+      <Box component="span" style={{fontSize: '3em'}}>
+          I am {name}
+      </Box>
+    </Box>
+  );
 }
+
+export default UserName
