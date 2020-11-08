@@ -2,20 +2,16 @@ import React, { useState } from 'react'
 import { Box } from '@material-ui/core';
 import BusinessCardForm from './BusinessCardForm';
 import BusinessCardCard from './BusinessCardCard';
+import { useSelector } from 'react-redux';
 
 function BusinessCardMaker() {
-  const [submittedForm, setSubmittedForm] = useState(null);
-
-  const handleSubmitCb = (values) => {
-    setSubmittedForm(values)
-  }
-
+  const businessCardFormData = useSelector(state => state.businessCardFormData);
   return (
     <Box>
-      <BusinessCardForm handleSubmitCb={handleSubmitCb}/>
-      { submittedForm &&
+      <BusinessCardForm />
+      { businessCardFormData &&
         (
-          <BusinessCardCard submittedForm={submittedForm}/>
+          <BusinessCardCard />
         )
       }
       <br />

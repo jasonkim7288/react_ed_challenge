@@ -3,6 +3,9 @@ import React from 'react';
 import GridBox from '../GridBox';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import { updateBusinessCardForm } from '../../actions/actions';
+import { useDispatch } from 'react-redux';
+
 
 const initialValues = {
   givenName: '',
@@ -15,10 +18,6 @@ const initialValues = {
   state: '',
   postcode: '',
   country: ''
-};
-
-const onSubmitWrapped = handleSubmitCb => values => {
-  handleSubmitCb({...values});
 };
 
 const validationSchema = Yup.object().shape({
@@ -45,14 +44,20 @@ function MyTextField(props) {
   )
 }
 
-function BusinessCardForm({ handleSubmitCb }) {
+function BusinessCardForm() {
+  const dispatch = useDispatch();
+
+  const handleSubmit = (values) => {
+    dispatch(updateBusinessCardForm(values));
+  }
+
   console.log('formik rendered');
   return (
     <Box mb={4}>
       <Typography variant="h3">PERSONAL DETAILS</Typography>
       <Divider />
       <br />
-      <Formik initialValues={initialValues} onSubmit={onSubmitWrapped(handleSubmitCb)} validationSchema={validationSchema}>
+      <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
         {({ errors, touched }) => (
           <Form>
             <Grid container spacing={3}>
@@ -99,6 +104,5 @@ function BusinessCardForm({ handleSubmitCb }) {
     </Box>
   )
 }
-
 
 export default BusinessCardForm;

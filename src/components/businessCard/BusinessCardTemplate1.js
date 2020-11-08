@@ -1,5 +1,6 @@
 import { Box, Grid, Typography } from '@material-ui/core';
 import React from 'react'
+import { useSelector } from 'react-redux';
 
 function MyTypography({ children, myType }) {
   const typoStyle = {
@@ -15,8 +16,9 @@ function MyTypography({ children, myType }) {
   )
 }
 
-function BusinessCardTemplate1({ settings, submittedForm }) {
-  const { givenName, surName, email, phone, houseNameOrNum, street, suburb, state, postcode, country } = submittedForm;
+function BusinessCardTemplate1({ settings}) {
+  const businessCardFormData = useSelector(state => state.businessCardFormData);
+  const { givenName, surName, email, phone, houseNameOrNum, street, suburb, state, postcode, country } = businessCardFormData;
   const gridContainerStyle = {
     padding: '77px 0'
   };

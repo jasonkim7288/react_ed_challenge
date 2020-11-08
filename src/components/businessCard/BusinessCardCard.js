@@ -7,7 +7,8 @@ import BusinessCardSettings from './BusinessCardSettings';
 import BusinessCardImageSetting from './BusinessCardImageSetting';
 import Carousel from 'react-material-ui-carousel';
 
-function BusinessCardCard({ submittedForm }) {
+
+function BusinessCardCard() {
   const [settings, setSettings] = useState({
     textColor: '#d1d0d8',
     backgroundColor: '#2a2b2e',
@@ -65,8 +66,8 @@ function BusinessCardCard({ submittedForm }) {
     width: '100%'
   }
   const cardTemplates = [
-    (<BusinessCardTemplate1 key="T1" settings={settings} submittedForm={submittedForm} />),
-    (<BusinessCardTemplate2 key="T2" settings={settings} submittedForm={submittedForm} />)
+    (<BusinessCardTemplate1 key="T1" settings={settings} />),
+    (<BusinessCardTemplate2 key="T2" settings={settings} />)
   ]
 
   return (
