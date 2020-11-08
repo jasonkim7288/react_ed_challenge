@@ -20,12 +20,12 @@ export default class BusinessCardMaker extends Component {
     const { submittedForm } = this.state;
     return (
       <Box>
+        <BusinessCardForm handleSubmitCb={this.handleSubmitCb}/>
         { submittedForm &&
           (
             <BusinessCardCard submittedForm={submittedForm}/>
           )
         }
-        <BusinessCardForm handleSubmitCb={this.handleSubmitCb}/>
         <br />
 
       </Box>

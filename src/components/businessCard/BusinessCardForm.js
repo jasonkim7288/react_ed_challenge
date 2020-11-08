@@ -48,7 +48,7 @@ function MyTextField(props) {
 function BusinessCardForm({ handleSubmitCb }) {
   console.log('formik rendered');
   return (
-    <Box>
+    <Box mb={4}>
       <Typography variant="h3">PERSONAL DETAILS</Typography>
       <Divider />
       <br />
