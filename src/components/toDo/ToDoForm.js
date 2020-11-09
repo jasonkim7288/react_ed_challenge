@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef } from 'react';
 import { ToDoListContext } from '../../contexts/ToDoListContext';
 import { Box, TextField } from '@material-ui/core';
 import uuid from 'react-uuid';

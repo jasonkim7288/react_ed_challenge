@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Checkbox, IconButton, ListItem, ListItemIcon, ListItemSecondaryAction, ListItemText } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { ToDoListContext } from '../../contexts/ToDoListContext';
@@ -22,11 +22,6 @@ function ToDoItem({ toDo }) {
   const handleDelete = () => {
     setToDoList(toDoList.filter(element => element.id !== toDo.id));
   };
-
-  useEffect(() => {
-    console.log('toDoList:', toDoList);
-  }, [toDoList]);
-
 
   return (
     <ListItem>

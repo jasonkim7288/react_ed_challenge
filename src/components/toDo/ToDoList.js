@@ -37,7 +37,7 @@ function ToDoList() {
         setToDoList(JSON.parse(data.Body.toString('ascii')));
       }
     })
-  }, [])
+  }, [setToDoList])
 
   useEffect(() => {
     console.log('useEffect of toDoList');
@@ -59,7 +59,7 @@ function ToDoList() {
         }
       })
     }
-  }, [toDoList])
+  }, [toDoList, prevToDoList])
 
   return (
     <List>

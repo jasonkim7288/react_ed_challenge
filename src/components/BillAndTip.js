@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import { Box, Divider, Grid, Typography, TextField, Button } from '@material-ui/core';
+import { Box, Typography, TextField, Button } from '@material-ui/core';
 
 const initialValues = {
   billAmount: 0,
