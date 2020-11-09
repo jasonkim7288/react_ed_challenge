@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Box, Checkbox, IconButton, ListItem, ListItemIcon, ListItemSecondaryAction, ListItemText, Typography } from '@material-ui/core';
+import { Checkbox, IconButton, ListItem, ListItemIcon, ListItemSecondaryAction, ListItemText } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { ToDoListContext } from '../../contexts/ToDoListContext';
 import { useContext } from 'react';

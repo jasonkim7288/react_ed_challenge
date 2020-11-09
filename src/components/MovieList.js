@@ -21,7 +21,7 @@ export default class MovieList extends Component {
 
     this.params = {
       Bucket: process.env.REACT_APP_AWS_BUCKET_NAME,
-      Delimiter: ''
+      Key: process.env.REACT_APP_AWS_FILE_NAME_MOVIE_LIST
     };
 
     console.log('this.params:', this.params)
@@ -29,7 +29,7 @@ export default class MovieList extends Component {
     this.s3.getObject(this.params, (err, data) => {
       if (err) {
         console.log('err:', err);
-        this.uploadString(JSON.stringify([]), process.env.REACT_APP_AWS_FILE_NAME);
+        this.uploadString(JSON.stringify([]), process.env.REACT_APP_AWS_FILE_NAME_MOVIE_LIST);
       } else {
         console.log('succeed',JSON.parse(data.Body.toString('ascii')));
         this.setState({movieList: JSON.parse(data.Body.toString('ascii'))});
