@@ -20,6 +20,8 @@ import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import TheatersIcon from '@material-ui/icons/Theaters';
 import PeopleIcon from '@material-ui/icons/People';
 import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -28,6 +30,8 @@ import LogInOut from './LogInOut';
 import MovieList from './MovieList';
 import ThreeUserName from './ThreeUserName';
 import BusinessCardMaker from './businessCard/BusinessCardMaker';
+import BillAndTip from './BillAndTip';
+import ToDoMain from './toDo/ToDoMain';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -94,8 +98,8 @@ function App() {
           <Tab label="Log in and out" icon={<LockOpenIcon />} {...a11yProps(7)} />
           <Tab label="Movie List" icon={<TheatersIcon />} {...a11yProps(8)} />
           <Tab label="Three user names" icon={<PeopleIcon />} {...a11yProps(9)} />
-
-
+          <Tab label="Bill and Tip" icon={<AttachMoneyIcon />} {...a11yProps(10)} />
+          <Tab label="ToDo list" icon={<FormatListBulletedIcon />} {...a11yProps(11)} />
         </Tabs>
       </AppBar>
 
@@ -128,6 +132,12 @@ function App() {
       </TabPanel>
       <TabPanel value={value} index={9}>
         <ThreeUserName />
+      </TabPanel>
+      <TabPanel value={value} index={10}>
+        <BillAndTip />
+      </TabPanel>
+      <TabPanel value={value} index={11}>
+        <ToDoMain />
       </TabPanel>
     </Container>
   )
