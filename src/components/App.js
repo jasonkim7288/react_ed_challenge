@@ -22,6 +22,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import ChildCareIcon from '@material-ui/icons/ChildCare';
 
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -32,6 +33,7 @@ import ThreeUserName from './ThreeUserName';
 import BusinessCardMaker from './businessCard/BusinessCardMaker';
 import BillAndTip from './BillAndTip';
 import ToDoMain from './toDo/ToDoMain';
+import Hooks from './Hooks';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -100,6 +102,8 @@ function App() {
           <Tab label="Three user names" icon={<PeopleIcon />} {...a11yProps(9)} />
           <Tab label="Bill and Tip" icon={<AttachMoneyIcon />} {...a11yProps(10)} />
           <Tab label="ToDo list" icon={<FormatListBulletedIcon />} {...a11yProps(11)} />
+          <Tab label="Hooks" icon={<ChildCareIcon />} {...a11yProps(12)} />
+
         </Tabs>
       </AppBar>
 
@@ -138,6 +142,9 @@ function App() {
       </TabPanel>
       <TabPanel value={value} index={11}>
         <ToDoMain />
+      </TabPanel>
+      <TabPanel value={value} index={12}>
+        <Hooks />
       </TabPanel>
     </Container>
   )

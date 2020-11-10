@@ -43,6 +43,7 @@ function ToDoList() {
     console.log('useEffect of toDoList');
     console.log('prevToDoList:', prevToDoList);
     console.log('toDoList:', toDoList);
+    console.log('process.env.REACT_APP_AWS_BUCKET_NAME:', process.env.REACT_APP_AWS_BUCKET_NAME)
 
     if (prevToDoList) {
       const writeParams = {
