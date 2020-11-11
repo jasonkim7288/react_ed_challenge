@@ -1,8 +1,9 @@
 import { Button, Typography } from '@material-ui/core';
-import React, { useState } from 'react';
+import React from 'react';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 function Hooks() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useLocalStorage('count', 0);
   return (
     <div>
       <Typography variant="subtitle1">You clicked {count} times</Typography>

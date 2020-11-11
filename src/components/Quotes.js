@@ -9,14 +9,15 @@ function Quotes() {
   const [author, setAuthor] = useState(null);
 
   const getQuote = () => {
-    setQuote(null);
-    setAuthor(null);
+    setQuote('');
+    setAuthor('');
     axios.get('https://quote-garden.herokuapp.com/api/v2/quotes/random')
       .then(res => {
-        console.log('res:', res)
-        setQuote(res.data.quote.quoteText);
-        setAuthor(res.data.quote.quoteAuthor);
-    });
+        // console.log('res:', res)
+        const { quoteText, quoteAuthor } = res.data.quote;
+        setQuote(quoteText);
+        setAuthor(quoteAuthor);
+      }).catch(console.log);
   }
 
   const copyToClipboard = () => {
@@ -24,8 +25,10 @@ function Quotes() {
   }
 
   useEffect(() => {
-    getQuote();
-  }, [])
+    if (quote === null) {
+      getQuote();
+    }
+  })
 
   return (
     <Box mt={8}>

@@ -28,7 +28,7 @@ const validationSchema = Yup.object().shape({
 
 function MyTextField(props) {
   const {name, errors} = props;
-  console.log('props:', props);
+  // console.log('props:', props);
   return (
     <TextField {...props} error={errors[name] ? true : false} helperText={errors[name]?.message} />
   )

@@ -28,16 +28,17 @@ function ToDoList() {
   const prevToDoList = usePrevious(toDoList);
 
   useEffect(() => {
-    console.log('useEffect of start');
-    s3.getObject(params, (err, data) => {
-      if (err) {
-        console.log('err:', err);
-      } else {
-        console.log(data.Body.toString('ascii'));
-        setToDoList(JSON.parse(data.Body.toString('ascii')));
-      }
-    })
-  }, [setToDoList])
+    if (!toDoList) {
+      s3.getObject(params, (err, data) => {
+        if (err) {
+          console.log('err:', err);
+        } else {
+          console.log(data.Body.toString('ascii'));
+          setToDoList(JSON.parse(data.Body.toString('ascii')));
+        }
+      })
+    }
+  });
 
   useEffect(() => {
     console.log('useEffect of toDoList');
@@ -64,7 +65,7 @@ function ToDoList() {
 
   return (
     <List>
-      {
+      { toDoList &&
         toDoList.map(toDo => <ToDoItem toDo={toDo} key={toDo.id}/>)
       }
     </List>

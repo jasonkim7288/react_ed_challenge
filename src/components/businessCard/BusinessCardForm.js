@@ -6,7 +6,6 @@ import * as Yup from 'yup';
 import { updateBusinessCardForm } from '../../actions/actions';
 import { useDispatch } from 'react-redux';
 
-
 const initialValues = {
   givenName: '',
   surName: '',
@@ -34,15 +33,33 @@ const validationSchema = Yup.object().shape({
     .required(),
   phone: Yup.number()
     .required()
-})
+});
 
 function MyTextField(props) {
-  console.log('props:', props);
+  // console.log('props:', props);
   const {errors, name} = props;
   return (
-    <Field {...props} error={errors[name] ? true : false} helperText={errors[name]} as={TextField}/>
+    <GridBox>
+      <Field {...props} error={errors[name] ? true : false} helperText={errors[name]} as={TextField} fullWidth={true}/>
+    </GridBox>
   )
 }
+
+const mandatoryField = [
+  { label: "GIVEN NAME", name: "givenName" },
+  { label: "SURNAME", name: "surName" },
+  { label: "EMAIL", name: "email" },
+  { label: "PHONE", name: "phone" }
+];
+
+const optionalField = [
+  { label: "HOUSE NAME OR #", name: "houseNameOrNum" },
+  { label: "STREET", name: "street" },
+  { label: "SUBURB", name: "suburb" },
+  { label: "STATE", name: "state" },
+  { label: "POSTCODE", name: "postcode" },
+  { label: "COUNTRY", name: "country" },
+]
 
 function BusinessCardForm() {
   const dispatch = useDispatch();
@@ -61,39 +78,15 @@ function BusinessCardForm() {
         {({ errors, touched }) => (
           <Form>
             <Grid container spacing={3}>
-              <GridBox>
-                <MyTextField label="GIVEN NAME" name="givenName" errors={errors}/>
-              </GridBox>
-              <GridBox>
-                <MyTextField label="SURNAME" name="surName" errors={errors}/>
-              </GridBox>
-              <GridBox>
-                <MyTextField label="EMAIL" name="email" errors={errors}/>
-              </GridBox>
-              <GridBox>
-                <MyTextField label="PHONE" name="phone" errors={errors}/>
-              </GridBox>
+              { mandatoryField.map(field =>
+                <MyTextField label={field.label} name={field.name} errors={errors}/>
+              )}
               <Grid item xs={12}>
                 <Divider />
               </Grid>
-              <GridBox>
-                <MyTextField label="HOUSE NAME OR #" name="houseNameOrNum" errors={errors}/>
-              </GridBox>
-              <GridBox>
-                <MyTextField label="STREET" name="street" errors={errors}/>
-              </GridBox>
-              <GridBox>
-                <MyTextField label="SUBURB" name="suburb" errors={errors}/>
-              </GridBox>
-              <GridBox>
-                <MyTextField label="STATE" name="state" errors={errors}/>
-              </GridBox>
-              <GridBox>
-                <MyTextField label="POSTCODE" name="postcode" errors={errors}/>
-              </GridBox>
-              <GridBox>
-                <MyTextField label="COUNTRY" name="country" errors={errors}/>
-              </GridBox>
+              { optionalField.map(field =>
+                <MyTextField label={field.label} name={field.name} errors={errors}/>
+              )}
               <GridBox>
                 <Button variant="contained" color="primary" type="submit">Submit</Button>
               </GridBox>

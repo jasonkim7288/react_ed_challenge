@@ -15,7 +15,13 @@ function useLocalStorage(key, initialValue) {
     try {
       const valueToStore = value instanceof Function ? value(storedValue) : value;
       setStoredValue(valueToStore);
-      window.localStorage.setItem(key, JSON.stringify(valueToStore))
+      window.localStorage.setItem(key, JSON.stringify(valueToStore));
+    } catch (error) {
+      console.log('error:', error);
+    }
+  };
+
+  return [storedValue, setValue];
 }
 
 export default useLocalStorage;

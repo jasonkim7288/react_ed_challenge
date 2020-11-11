@@ -3,7 +3,7 @@ import React, { useState, createContext } from 'react';
 const ToDoListContext = createContext();
 
 const ToDoListProvider = ({ children }) => {
-  const [toDoList, setToDoList] = useState([]);
+  const [toDoList, setToDoList] = useState(null);
 
   return (
     <ToDoListContext.Provider value={[toDoList, setToDoList]}>
